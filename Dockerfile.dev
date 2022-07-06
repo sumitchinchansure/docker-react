@@ -1,0 +1,18 @@
+# get the base image
+FROM node:16-alpine
+
+
+# make a working directory and use it.
+WORKDIR '/app'
+
+# copy the dependency files
+COPY package.json .
+
+# install the dependencies
+RUN npm install
+
+# then copy all the other required files inside the container
+COPY . .
+
+# then finally command to start the app
+CMD ["npm", "run", "start"]
