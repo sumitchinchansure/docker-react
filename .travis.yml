@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t sumitchinchansure/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true sumitchinchansure/docker-react npm run test -- --coverage
